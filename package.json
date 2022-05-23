@@ -2,7 +2,7 @@
   "name": "samueljansem.dev",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://samueljansem.github.io/",
+  "homepage": "https://samueljansem.github.io/samueljansem.dev/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
