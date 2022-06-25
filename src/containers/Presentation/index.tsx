@@ -9,11 +9,13 @@ import {
     Welcome,
     Wrapper,
 } from './styles';
-import { Avatar, Button } from '../../components';
+import { Avatar, Button, DownloadButton } from '../../components';
 
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 
 import img from '../../assets/img/profile-pic.jpg';
+
+import cv from '../../assets/pdf/CV_Samuel-Jansem.pdf';
 
 export function Presentation() {
     return (
@@ -25,10 +27,10 @@ export function Presentation() {
                 </Title>
                 <Role>Desenvolvedor Web</Role>
                 <ButtonsWrapper>
-                    <Button>
+                    <DownloadButton href={cv} download="CV - Samuel Jansem">
                         Download CV
                         <StyledDownloadIcon size={20} />
-                    </Button>
+                    </DownloadButton>
                     <Button outlined>
                         <a href="https://wa.me/05531994851443" target="_blank">
                             <FaWhatsapp size={24} />
