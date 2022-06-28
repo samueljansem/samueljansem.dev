@@ -74,6 +74,21 @@ export const Socials = styled('div', {
     gap: '1rem',
 });
 
+export const PersonalInfo = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    color: '$gray',
+
+    div: {
+        flex: 1,
+        width: '100%',
+    },
+});
+
 export const ButtonsWrapper = styled('div', {
     display: 'flex',
     gap: '1rem',

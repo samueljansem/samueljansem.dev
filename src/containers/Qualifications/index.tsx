@@ -13,7 +13,7 @@ export function Qualifications() {
                     <h3>Experiências</h3>
                 </Head>
                 <QualificationItem>
-                    <strong>Desenvolvedor Pleno</strong>
+                    <strong>Desenvolvedor Fullstack Pleno</strong>
                     <QualificationWrapper>
                         <span>Pense Open</span>
                         <span>
@@ -23,7 +23,7 @@ export function Qualifications() {
                     </QualificationWrapper>
                 </QualificationItem>
                 <QualificationItem>
-                    <strong>Desenvolvedor Junior</strong>
+                    <strong>Desenvolvedor Fullstack Jr</strong>
                     <QualificationWrapper>
                         <span>Sinqia</span>
                         <span>
@@ -33,7 +33,7 @@ export function Qualifications() {
                     </QualificationWrapper>
                 </QualificationItem>
                 <QualificationItem>
-                    <strong>Estágiário Desenvolvimento</strong>
+                    <strong>Estágiário em Desenvolvimento</strong>
                     <QualificationWrapper>
                         <span>Jabil</span>
                         <span>

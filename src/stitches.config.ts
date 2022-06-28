@@ -19,7 +19,7 @@ export const { styled, globalCss, theme } = createStitches({
             hiContrast2: '#29292e',
             loContrast: '#E6E6E6',
             loContrast2: '#AEAEAE',
-            gray: '#999999',
+            gray: '#777777',
         },
     },
     media: {
@@ -34,6 +34,6 @@ export const darkTheme = createTheme({
         hiContrast2: '#AEAEAE',
         loContrast: '#121214',
         loContrast2: '#29292e',
-        gray: '#999999',
+        gray: '#777777',
     },
 });
