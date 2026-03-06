@@ -2,53 +2,52 @@
 # we need to prefix all configuration keys with an underscore.
 
 [_.site]
-baseUrl = "http://zaggonaut.dev"
+baseUrl = "https://samueljansem.dev"
 
 [_.globalMeta]
-title = "Zaggonaut"
-description = "Retro-Inspired Theme & Built for Astro"
-longDescription = "Zaggonaut is a retro-inspired theme for Astro, built using TypeScript, TailwindCSS, and Astro."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Samuel Jansem"
+description = "Software Engineer based in Brazil"
+longDescription = "Samuel Jansem is a Software Engineer at @silverlogic, building web applications and open-source tools."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["software engineering", "python", "django", "open-source"]
 
 [_.blogMeta]
-title = "Zaggonaut Blog"
-description = "Practical wisdom, unfiltered thoughts, and hot takes."
-longDescription = "Web development, tech trends, and the occasional programming mishap."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Blog"
+description = "Thoughts on software engineering, web development, and open-source."
+longDescription = "Posts about software engineering, web development, and open-source projects."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["software engineering", "python", "django", "web development"]
 
 [_.projectMeta]
-title = "Zaggonaut Projects"
-description = "A list of my web development projects and developer tools."
-longDescription = "All of my projects, including both frontend and full-stack applications."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Projects"
+description = "Open-source projects and developer tools."
+longDescription = "A collection of my open-source projects and developer tools."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["open-source", "python", "django", "developer tools"]
 
 [_.notFoundMeta]
-title = "Zaggonaut 404"
+title = "404 - Page Not Found"
 description = "The page you are looking for does not exist."
-longDescription = "The page you are looking for does not exist. Maybe it never existed. Spooky."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
+longDescription = "The page you are looking for does not exist."
+cardImage = "https://github.com/samueljansem.png"
 
 [_.hero]
-title = "Zaggonaut"
-subtitle = "Retro-Inspired Theme &<br />Built for Astro"
-image = "https://zaggonaut.dev/michael-dam-unsplash.webp"
+title = "Samuel Jansem"
+subtitle = "Software Engineer"
+image = "https://github.com/samueljansem.png"
 ctaText = "View Projects"
 ctaUrl = "/projects"
 
 [_.personal]
-name = "Zaggonaut"
-githubProfile = "https://github.com/RATIU5/zaggonaut"
-twitterProfile = "https://twitter.com"
-linkedinProfile = "https://linkedin.com/"
+name = "Samuel Jansem"
+githubProfile = "https://github.com/samueljansem"
+linkedinProfile = "https://linkedin.com/in/samueljansem"
 
 [_.texts]
-articlesName = "Articles"
+articlesName = "Posts"
 projectsName = "Projects"
 viewAll = "View All"
-noArticles = "No articles found."
+noArticles = "No posts found."
 noProjects = "No projects found."
 
 [_.menu]
