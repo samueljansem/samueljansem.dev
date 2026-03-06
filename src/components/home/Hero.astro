@@ -9,6 +9,8 @@ const { data: config } = await getConfigurationCollection();
     src={config.hero.image}
     alt={`${config.hero.title}`}
     class="rounded-full max-w-40 w-40 h-40 mb-4 z-0 grayscale"
+    fetchpriority="high"
+    loading="eager"
   />
   <div>
     <h1
