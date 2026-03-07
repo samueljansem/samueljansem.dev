@@ -5,7 +5,7 @@ description: Who I am and why I started this blog.
 tags: ['personal']
 readTime: 1
 featured: true
-timestamp: 2026-03-06T00:00:00+00:00
+timestamp: 2026-03-05T00:00:00+00:00
 ---
 
 I'm Samuel Jansem, a Software Engineer based in Brazil, currently working at [@silverlogic](https://tsl.io). Most of my work revolves around web development with Python and Django.
