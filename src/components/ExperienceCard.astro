@@ -1,0 +1,31 @@
+---
+import type { Experience } from "../data/experiences";
+import Anchor from "./common/Anchor.astro";
+
+export type Props = Experience;
+
+const { company, role, description, technologies, url } = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-baseline">
+    <h3 class="text-lg font-semibold">
+      {url ? (
+        <Anchor url={url} external>{company}</Anchor>
+      ) : (
+        company
+      )}
+    </h3>
+    <span class="zag-muted text-sm">{role}</span>
+  </div>
+  <p class="zag-text zag-transition">{description}</p>
+  <div class="flex flex-row flex-wrap gap-2">
+    {
+      technologies.map((tech) => (
+        <span class="-zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold">
+          {tech}
+        </span>
+      ))
+    }
+  </div>
+</div>
