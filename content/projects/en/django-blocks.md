@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: django-blocks
 slug: django-blocks
 description: Atomic Django apps. Copy, own, customize.

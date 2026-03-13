@@ -50,7 +50,31 @@ viewAll = "View All"
 noArticles = "No posts found."
 noProjects = "No projects found."
 
+[_.aboutMeta]
+title = "About - Samuel Jansem"
+description = "Learn more about Samuel Jansem, a Software Engineer based in Brazil."
+longDescription = "About Samuel Jansem - Software Engineer building web applications and open-source tools."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["about", "software engineer", "samuel jansem"]
+
+[_.experiencesMeta]
+title = "Experiences - Samuel Jansem"
+description = "Professional experience and career history of Samuel Jansem."
+longDescription = "Professional experience and career history of Samuel Jansem as a Software Engineer."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["experience", "career", "software engineer"]
+
+[_.contactMeta]
+title = "Contact - Samuel Jansem"
+description = "Get in touch with Samuel Jansem."
+longDescription = "Contact Samuel Jansem - Software Engineer based in Brazil."
+cardImage = "https://github.com/samueljansem.png"
+keywords = ["contact", "email", "samuel jansem"]
+
 [_.menu]
 home = "/"
 projects = "/projects"
 blog = "/blog"
+about = "/about"
+experiences = "/experiences"
+contact = "/contact"

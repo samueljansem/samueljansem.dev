@@ -225,6 +225,30 @@ const configuration = defineCollection({
 			noProjects: z.string().default("No projects found."),
 		}),
 
+		aboutMeta: z.object({
+			title: z.string(),
+			description: z.string(),
+			longDescription: z.string().optional(),
+			cardImage: z.string().url().optional(),
+			keywords: z.array(z.string()).optional(),
+		}),
+
+		experiencesMeta: z.object({
+			title: z.string(),
+			description: z.string(),
+			longDescription: z.string().optional(),
+			cardImage: z.string().url().optional(),
+			keywords: z.array(z.string()).optional(),
+		}),
+
+		contactMeta: z.object({
+			title: z.string(),
+			description: z.string(),
+			longDescription: z.string().optional(),
+			cardImage: z.string().url().optional(),
+			keywords: z.array(z.string()).optional(),
+		}),
+
 		/**
 		 * The menu configuration for the site.
 		 * This defines the URLs for the main navigation links.
@@ -233,7 +257,9 @@ const configuration = defineCollection({
 			home: z.string().default("/"),
 			projects: z.string().default("/projects"),
 			blog: z.string().default("/blog"),
-			/** Add other menu items here **/
+			about: z.string().default("/about"),
+			experiences: z.string().default("/experiences"),
+			contact: z.string().default("/contact"),
 		}),
 	}),
 });
@@ -243,9 +269,18 @@ const configuration = defineCollection({
  * It loads markdown files from the `content/blogs` directory and defines the schema for each blog post.
  */
 const blog = defineCollection({
-	loader: glob({ pattern: "**/*.md", base: "./content/blogs" }),
+	loader: glob({
+		pattern: "**/*.md",
+		base: "./content/blogs",
+		generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+	}),
 	schema: z
 		.object({
+			/**
+			 * The language of the blog post content.
+			 */
+			lang: z.enum(["en", "pt-br"]).default("en"),
+
 			/**
 			 * The title of the blog post.
 			 */
@@ -311,9 +346,18 @@ const blog = defineCollection({
  * It loads markdown files from the `content/projects` directory and defines the schema for each project.
  */
 const project = defineCollection({
-	loader: glob({ pattern: "**/*.md", base: "./content/projects" }),
+	loader: glob({
+		pattern: "**/*.md",
+		base: "./content/projects",
+		generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+	}),
 	schema: z
 		.object({
+			/**
+			 * The language of the project content.
+			 */
+			lang: z.enum(["en", "pt-br"]).default("en"),
+
 			/**
 			 * The title of the project.
 			 */

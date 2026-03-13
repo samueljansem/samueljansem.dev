@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: Hello, World!
 slug: hello-world
 description: Who I am and why I started this blog.

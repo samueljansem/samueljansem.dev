@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: rinha-backend-2024-q1-dotnet
 slug: rinha-backend-2024-q1-dotnet
 description: My .NET submission for Rinha de Backend 2024 Q1, a Brazilian backend competition where participants build a financial transaction API under strict CPU and memory constraints.

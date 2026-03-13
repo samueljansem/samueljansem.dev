@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: kotlin-ticketing-ledger
 slug: kotlin-ticketing-ledger
 description: A double-entry bookkeeping system for event ticket sales settlement, built with Kotlin coroutines. Records purchases, refunds, payouts, and fees as immutable, balanced journal entries.

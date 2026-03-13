@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: interpixpy
 slug: interpixpy
 description: Python SDK for Banco Inter's Pix API.
