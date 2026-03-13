@@ -26,6 +26,48 @@ export const processArticleDate = (date: Date) => {
 	return `${monthSmall} ${day}, ${year}`;
 };
 
+/**
+ * Returns blog posts for a given locale with EN fallback for PT-BR.
+ * For "en": returns only EN posts.
+ * For "pt-br": returns PT-BR version if it exists, otherwise the EN version.
+ * EN is the canonical set — PT-BR-only posts with no EN counterpart are ignored.
+ */
+export const getBlogPostsForLocale = async (
+	locale: "en" | "pt-br",
+	filter?: (entry: CollectionEntry<"blog">) => boolean,
+) => {
+	const allPosts = await getCollection("blog");
+
+	const enPosts = new Map<string, CollectionEntry<"blog">>();
+	const ptBrPosts = new Map<string, CollectionEntry<"blog">>();
+
+	for (const post of allPosts) {
+		const baseFilename = post.id.replace(/^(en|pt-br)\//, "");
+		if (post.data.lang === "pt-br") {
+			ptBrPosts.set(baseFilename, post);
+		} else {
+			enPosts.set(baseFilename, post);
+		}
+	}
+
+	let posts: CollectionEntry<"blog">[];
+	if (locale === "en") {
+		posts = [...enPosts.values()];
+	} else {
+		posts = [...enPosts.entries()].map(
+			([filename, enPost]) => ptBrPosts.get(filename) ?? enPost,
+		);
+	}
+
+	if (filter) {
+		posts = posts.filter(filter);
+	}
+
+	return posts.sort(
+		(a, b) => b.data.timestamp.valueOf() - a.data.timestamp.valueOf(),
+	);
+};
+
 let configCache: CollectionEntry<"configuration"> | null = null;
 
 /**
