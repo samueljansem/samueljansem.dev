@@ -1,14 +1,14 @@
 ---
 import { getCollection } from "astro:content";
-import Section from "../../components/common/Section.astro";
-import ProjectSnippet from "../../components/ProjectSnippet.astro";
-import Timeline from "../../components/timeline/Timeline.astro";
-import TimelineItem from "../../components/timeline/TimelineItem.astro";
-import Layout from "../../layouts/Layout.astro";
-import { getConfigurationCollection, processArticleDate } from "../../lib/utils";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import Section from "../../../components/common/Section.astro";
+import ProjectSnippet from "../../../components/ProjectSnippet.astro";
+import Timeline from "../../../components/timeline/Timeline.astro";
+import TimelineItem from "../../../components/timeline/TimelineItem.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { getConfigurationCollection, processArticleDate } from "../../../lib/utils";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 
-const projects = (await getCollection("project", (e) => e.data.lang === "en")).sort(
+const projects = (await getCollection("project", (e) => e.data.lang === "pt-br")).sort(
 	(a, b) => b.data.timestamp.valueOf() - a.data.timestamp.valueOf(),
 );
 
@@ -25,27 +25,12 @@ const t = useTranslations(lang);
       content={config.projectMeta.longDescription ?? config.projectMeta.description}
     />
     <meta property="og:title" content={config.projectMeta.title} />
-    <meta
-      property="og:description"
-      content={config.projectMeta.description}
-    />
-    {config.projectMeta.keywords && (
-      <meta name="keywords" content={config.projectMeta.keywords.join(", ")} />
-    )}
+    <meta property="og:description" content={config.projectMeta.description} />
     {config.projectMeta.cardImage && (
       <meta property="og:image" content={config.projectMeta.cardImage} />
     )}
-    <meta property="og:url" content={`${config.site.baseUrl}/projects`} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={config.projectMeta.title} />
-    <meta
-      name="twitter:description"
-      content={config.projectMeta.description}
-    />
-    {config.projectMeta.cardImage && (
-      <meta name="twitter:image" content={config.projectMeta.cardImage} />
-    )}
-    <link rel="canonical" href={`${config.site.baseUrl}/projects`} />
+    <meta property="og:url" content={`${config.site.baseUrl}/pt-br/projects`} />
+    <link rel="canonical" href={`${config.site.baseUrl}/pt-br/projects`} />
   </Fragment>
   <Section class="py-4 my-8">
     <div class="flex items-center gap-4 pt-8 pb-16">
@@ -58,7 +43,7 @@ const t = useTranslations(lang);
             <ProjectSnippet
               title={project.data.title}
               description={project.data.description}
-              url={`/projects/${project.data.slug}`}
+              url={`/pt-br/projects/${project.data.slug}`}
               githubUrl={project.data.githubUrl}
               liveUrl={project.data.liveDemoUrl}
               tags={project.data.tags ?? []}

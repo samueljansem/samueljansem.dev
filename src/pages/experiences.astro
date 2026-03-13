@@ -1,0 +1,48 @@
+---
+import Section from "../components/common/Section.astro";
+import ExperienceCard from "../components/ExperienceCard.astro";
+import Timeline from "../components/timeline/Timeline.astro";
+import TimelineItem from "../components/timeline/TimelineItem.astro";
+import Layout from "../layouts/Layout.astro";
+import { experiences } from "../data/experiences";
+import { getConfigurationCollection } from "../lib/utils";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{config.experiencesMeta.title}</title>
+    <meta
+      name="description"
+      content={config.experiencesMeta.longDescription ?? config.experiencesMeta.description}
+    />
+    <meta property="og:title" content={config.experiencesMeta.title} />
+    <meta property="og:description" content={config.experiencesMeta.description} />
+    {config.experiencesMeta.keywords && (
+      <meta name="keywords" content={config.experiencesMeta.keywords.join(", ")} />
+    )}
+    {config.experiencesMeta.cardImage && (
+      <meta property="og:image" content={config.experiencesMeta.cardImage} />
+    )}
+    <meta property="og:url" content={`${config.site.baseUrl}/experiences`} />
+    <link rel="canonical" href={`${config.site.baseUrl}/experiences`} />
+  </Fragment>
+  <Section class="py-4 my-8">
+    <div class="flex items-center gap-4 pt-8 pb-16">
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">{t("page.experiences.title")}</h1>
+    </div>
+    <Timeline>
+      {
+        experiences[lang].map((exp) => (
+          <TimelineItem date={exp.period}>
+            <ExperienceCard {...exp} />
+          </TimelineItem>
+        ))
+      }
+    </Timeline>
+  </Section>
+</Layout>

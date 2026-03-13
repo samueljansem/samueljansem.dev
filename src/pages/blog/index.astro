@@ -1,15 +1,15 @@
 ---
-import { getCollection } from "astro:content";
 import ArticleSnippet from "../../components/ArticleSnippet.astro";
 import Section from "../../components/common/Section.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getConfigurationCollection } from "../../lib/utils";
+import { getBlogPostsForLocale, getConfigurationCollection } from "../../lib/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
-const articles = (await getCollection("blog")).sort(
-	(a, b) => b.data.timestamp.valueOf() - a.data.timestamp.valueOf(),
-);
+const articles = await getBlogPostsForLocale("en");
 
 const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout>
@@ -47,7 +47,7 @@ const { data: config } = await getConfigurationCollection();
   <Section class="my-8">
     <div class="flex items-center gap-4 pt-8 pb-16">
       <h1 class="font-display text-3xl sm:text-4xl leading-loose">
-        {config.texts.articlesName}
+        {t("section.articles")}
       </h1>
     </div>
     <ul>
@@ -58,7 +58,7 @@ const { data: config } = await getConfigurationCollection();
               title={article.data.title}
               description={article.data.description}
               duration={`${article.data.readTime} min`}
-              url={`${config.site.baseUrl}/blog/${article.data.slug}`}
+              url={`/blog/${article.data.slug}`}
               timestamp={article.data.timestamp}
             />
           </li>

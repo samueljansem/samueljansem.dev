@@ -1,0 +1,67 @@
+---
+import Section from "../../components/common/Section.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getConfigurationCollection } from "../../lib/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const skills = [
+  ".NET", "Python", "Django", "TypeScript", "React", "Astro",
+  "PostgreSQL", "Docker", "Git", "Linux",
+];
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{config.aboutMeta.title}</title>
+    <meta
+      name="description"
+      content={config.aboutMeta.longDescription ?? config.aboutMeta.description}
+    />
+    <meta property="og:title" content={config.aboutMeta.title} />
+    <meta property="og:description" content={config.aboutMeta.description} />
+    {config.aboutMeta.cardImage && (
+      <meta property="og:image" content={config.aboutMeta.cardImage} />
+    )}
+    <meta property="og:url" content={`${config.site.baseUrl}/pt-br/about`} />
+    <link rel="canonical" href={`${config.site.baseUrl}/pt-br/about`} />
+  </Fragment>
+  <Section class="py-4 my-8">
+    <div class="flex items-center gap-4 pt-8 pb-16">
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">{t("page.about.title")}</h1>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-8 mb-12">
+      <img
+        src={config.hero.image}
+        alt={config.personal.name}
+        class="rounded-full max-w-32 w-32 h-32 grayscale"
+      />
+      <div>
+        <h2 class="font-display text-xl mb-4">{t("about.bio.title")}</h2>
+        <p class="zag-text zag-transition leading-relaxed">{t("about.bio.content")}</p>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="font-display text-xl mb-4">{t("about.skills.title")}</h2>
+      <div class="flex flex-row flex-wrap gap-2">
+        {
+          skills.map((skill) => (
+            <span class="-zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl mb-4">{t("about.philosophy.title")}</h2>
+      <p class="zag-text zag-transition leading-relaxed">{t("about.philosophy.content")}</p>
+    </div>
+  </Section>
+</Layout>
