@@ -36,7 +36,7 @@ const { data: config } = await getConfigurationCollection();
     }
     <meta
       property="og:url"
-      content={`${config.site.baseUrl}/blog/${frontmatter.slug}`}
+      content={`${config.site.baseUrl}${frontmatter.url}`}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -49,11 +49,11 @@ const { data: config } = await getConfigurationCollection();
         <meta name="twitter:image" content={frontmatter.cardImage} />
       )
     }
-    <meta http-equiv="content-language" content="en" />
-    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content={frontmatter.lang === "pt-br" ? "pt-BR" : "en"} />
+    <meta name="language" content={frontmatter.lang === "pt-br" ? "Portuguese" : "English"} />
     <link
       rel="canonical"
-      href={`${config.site.baseUrl}/blog/${frontmatter.slug}`}
+      href={`${config.site.baseUrl}${frontmatter.url}`}
     />
   </Fragment>
   <Section class="pt-8">

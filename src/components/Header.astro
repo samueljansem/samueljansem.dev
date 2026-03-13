@@ -1,9 +1,22 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "../i18n/utils";
 import { getConfigurationCollection } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+  { label: t("nav.home"), path: "/" },
+  { label: t("nav.projects"), path: "/projects" },
+  { label: t("nav.blog"), path: "/blog" },
+  { label: t("nav.about"), path: "/about" },
+  { label: t("nav.experiences"), path: "/experiences" },
+  { label: t("nav.contact"), path: "/contact" },
+];
 ---
 
 <header class="zag-bg zag-border-b zag-transition sticky top-0 w-full z-10">
@@ -27,14 +40,15 @@ const { data: config } = await getConfigurationCollection();
   >
     <div
       class="flex flex-col font-mono font-medium gap-4 sm:flex-row px-4 sm:px-0 mt-16 sm:mt-0"
+      style="min-width:calc(42ch + 5rem)"
     >
       {
-        Object.entries(config.menu).map((i) => (
-          <Anchor url={i[1]}>{i[0]}</Anchor>
+        navItems.map((item) => (
+          <Anchor url={getLocalizedPath(item.path, lang)}>{item.label}</Anchor>
         ))
       }
     </div>
-    <div class="flex gap-4 px-4 sm:px-0">
+    <div class="flex gap-4 px-4 sm:px-0 items-center">
       {
         config.personal.githubProfile && (
           <Anchor
@@ -71,6 +85,7 @@ const { data: config } = await getConfigurationCollection();
           </Anchor>
         )
       }
+      <LanguageSwitcher />
       <div class="ml-auto">
         <ThemeToggle />
       </div>

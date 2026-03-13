@@ -1,6 +1,6 @@
 ---
 import type { ProjectFrontmatter } from "../../lib/types";
-import { getConfigurationCollection } from "../../lib/utils";
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "../../i18n/utils";
 import Anchor from "../common/Anchor.astro";
 import ProjectSnippet from "../ProjectSnippet.astro";
 
@@ -9,16 +9,17 @@ type Props = {
 };
 
 const { featuredProjects } = Astro.props;
-const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="flex justify-between items-center w-full">
-  <h3 class="font-display text-lg sm:text-xl leading-loose">{config.texts.projectsName}</h3>
-  <Anchor url="/projects" class="text-base">{config.texts.viewAll}</Anchor>
+  <h3 class="font-display text-lg sm:text-xl leading-loose">{t("section.projects")}</h3>
+  <Anchor url={getLocalizedPath("/projects", lang)} class="text-base">{t("section.viewAll")}</Anchor>
 </div>
 <ul class="my-8">
   {
-    (featuredProjects.length === 0 && <p>{config.texts.noProjects}</p>) ||
+    (featuredProjects.length === 0 && <p>{t("section.noProjects")}</p>) ||
       featuredProjects.map((project) => (
         <li>
           <ProjectSnippet

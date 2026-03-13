@@ -1,7 +1,10 @@
 ---
 import { getConfigurationCollection } from "../../lib/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="flex flex-col items-center sm:flex-row gap-8">
@@ -21,7 +24,7 @@ const { data: config } = await getConfigurationCollection();
     <h2
       class="text-center text-xl sm:text-2xl font-mono font-medium sm:text-left"
     >
-      <p set:html={config.hero.subtitle}/>
+      <p>{t("hero.subtitle")}</p>
     </h2>
   </div>
 </div>

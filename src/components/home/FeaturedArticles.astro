@@ -1,6 +1,6 @@
 ---
 import type { ArticleFrontmatter } from "../../lib/types";
-import { getConfigurationCollection } from "../../lib/utils";
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "../../i18n/utils";
 import ArticleSnippet from "../ArticleSnippet.astro";
 import Anchor from "../common/Anchor.astro";
 
@@ -9,16 +9,17 @@ type Props = {
 };
 
 const { featuredArticles } = Astro.props;
-const { data: config } = await getConfigurationCollection();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="flex justify-between items-center w-full">
-  <h3 class="font-display text-lg sm:text-xl leading-loose">{config.texts.articlesName}</h3>
-  <Anchor url="/blog" class="text-base">{config.texts.viewAll}</Anchor>
+  <h3 class="font-display text-lg sm:text-xl leading-loose">{t("section.articles")}</h3>
+  <Anchor url={getLocalizedPath("/blog", lang)} class="text-base">{t("section.viewAll")}</Anchor>
 </div>
 <ul class="my-8">
   {
-    (featuredArticles.length === 0 && <p>{config.texts.noArticles}</p>) ||
+    (featuredArticles.length === 0 && <p>{t("section.noArticles")}</p>) ||
       featuredArticles.map((article) => (
         <li>
           <ArticleSnippet
